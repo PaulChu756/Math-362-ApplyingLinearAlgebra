@@ -26,13 +26,13 @@ def apply_random_hue_per_row(hsv_image):
     return hsv_with_random_hue
 
 def apply_crazy_effect(hsv_image):
-    hsv_psychedelic = hsv_image.copy()
+    hsv_effect = hsv_image.copy()
 
     for col in range(hsv_image.shape[1]):
         hue_shift = col / hsv_image.shape[1] * MAX_HUE
-        hsv_psychedelic[:, col, 0] = (hsv_image[:, col, 0] + hue_shift) % MAX_HUE
+        hsv_effect[:, col, 0] = (hsv_image[:, col, 0] + hue_shift) % MAX_HUE
 
-    return hsv_psychedelic
+    return hsv_effect
 
 
 
@@ -56,7 +56,7 @@ def main():
     cv2.imshow('0. Original Image', original_image)
     cv2.imshow('1. RGB', rgb_image)
     cv2.imshow('2. RGB to HSV', hsv_result)
-    cv2.imshow('3. Psychedelic effect', hsv_result_crazy_effect)
+    cv2.imshow('3. Crazy effect', hsv_result_crazy_effect)
     cv2.imshow('4. HSV to RGB', rgb_result)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
